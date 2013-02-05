@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: project-kranti
+  api_key: '944587464767313'
+  api_secret: X8Fn-uiGVwv5eO0ICnlEgrzlryc
+  enhance_image_tag: true
+  static_image_support: false
+production:
+  cloud_name: project-kranti
+  api_key: '944587464767313'
+  api_secret: X8Fn-uiGVwv5eO0ICnlEgrzlryc
+  enhance_image_tag: true
+  static_image_support: true
+test:
+  cloud_name: project-kranti
+  api_key: '944587464767313'
+  api_secret: X8Fn-uiGVwv5eO0ICnlEgrzlryc
+  enhance_image_tag: true
+  static_image_support: false
