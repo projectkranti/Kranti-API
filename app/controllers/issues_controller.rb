@@ -4,4 +4,8 @@ class IssuesController < ApplicationController
     Issue.create(params[:issue])
   end
 
+  def index
+    @issues = Issue.all
+    render :json => @issues
+  end
 end
