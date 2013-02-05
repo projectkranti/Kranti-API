@@ -1,7 +1,7 @@
 class IssuesController < ApplicationController
 
   def create
-    remote_image_url = Cloudinary::Uploader.upload(params[:image])['url']
+    remote_image_url = Cloudinary::Uploader.upload(params[:image])['url'] if params[:image]
     Issue.create(issue_params_with_image_url(remote_image_url))
   end
 
