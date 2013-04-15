@@ -6,8 +6,9 @@ class IssuesController < ApplicationController
   end
 
   def index
-    @issues = Issue.all
-    render :json => @issues
+    limit_param = params[:limit]
+    issues = limit_param.present? ? Issue.limit(limit_param) : Issue.all
+    render :json => issues
   end
 
   private
