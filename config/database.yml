@@ -1,5 +1,5 @@
 development: &defaults
-  database: kranti_development
+  database: kranti-api_development
   username: developer
   password: password
   adapter: postgresql
@@ -9,7 +9,7 @@ development: &defaults
   pool: 5
 
 test:
-  database: kranti_test
+  database: kranti-api_test
   <<: *defaults
 
 production:
