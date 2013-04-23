@@ -1,8 +1,11 @@
 class IssuesController < ApplicationController
 
   def create
-    remote_image_url = Cloudinary::Uploader.upload(params[:image])['url'] if params[:image]
-    Issue.create(issue_params_with_image_url(remote_image_url))
+    user = User.find_or_create_by_uuid(params['issue'].delete('uuid'))
+    image_url = Image.new(params[:image]).image_url
+    Issue.create(params[:issue].
+                     merge(:image_url => image_url).
+                     merge(:user => user))
   end
 
   def index
@@ -12,7 +15,17 @@ class IssuesController < ApplicationController
   end
 
   private
-  def issue_params_with_image_url image_url
-    params[:issue].merge(:image_url => image_url)
+  class Image
+    def initialize(image)
+      @image = image
+    end
+
+    def image_url
+      @image.present? ? Cloudinary::Uploader.upload(@image)['url'] : default_image_path
+    end
+
+    def default_image_path
+      '/rails.png'
+    end
   end
 end
